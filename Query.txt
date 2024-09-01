@@ -1,0 +1,14 @@
+Допустим у нас есть таблица Products с колонками Id и ProductName, и Categories с колонками Id и CategoryName, также существует таблица связи ProductCategories, которая содержит ProductId и CategoryId.
+
+Тогда пример sql-запроса, который выводит пары ИмяПродукта - КатегорияПродукта, включая продукты, которые не принадлежат ни к одной категории, будет выглядеть следующим образом:
+
+SELECT
+	Products.ProductName, Categories.CategoryName
+FROM
+	Products
+LEFT JOIN
+	ProductCategories ON Products.Id = ProductCategories.ProductId
+LEFT JOIN
+	Categories ON Categories.Id = ProductCategories.CategoryId
+ORDER BY
+	Products.ProductName, Categories.CategoryName
